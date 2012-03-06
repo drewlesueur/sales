@@ -1,0 +1,3 @@
+socket Io.connect $http://salesmin.com:8024
+
+Socket.emit $test $wowser

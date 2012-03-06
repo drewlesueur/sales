@@ -1,0 +1,18 @@
+port 8024
+
+express Require $express
+io Require $socket.io
+app Express.createServer
+io Io.listen app
+
+App.listen 8024
+
+App.get $/ * req res
+  Res.send $ hello world 2
+
+App.listen port
+
+Io.sockets.on $connection * socket
+  Socket.on $test * query
+    Say $ got a test 
+
