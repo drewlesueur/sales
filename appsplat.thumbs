@@ -1,0 +1,19 @@
+$ appsplat is the name of a little library that runs your app
+$ todo: find a better way to do exports
+
+server GetModule $server
+
+run * port
+  express Require $express
+  io Require $socket.io
+  app Express.createServer
+  io Io.listen app
+
+  App.listen port
+
+  App.get $/ * req res
+    Res.send $ hello world 2
+
+  App.listen port
+
+SetModule $appsplat > run

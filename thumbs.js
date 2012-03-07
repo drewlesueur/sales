@@ -83,6 +83,29 @@
     }
   }
 
+
+  // module system based of @creationix's https://gist.github.com/926811 
+  // and @dshaw's fork 
+
+  var dModule = {}
+  var defs = dModule.defs = {}
+  var modules = dModule.modules = {}
+  
+  dModule.define = function (name, fn) {
+    defs[name] = fn;
+    delete modules[name]; 
+  }
+
+  dModule.require = function (name) {
+    if (modules.hasOwnProperty(name)) return modules[name];
+    if (defs.hasOwnProperty(name)) {
+      var fn = defs[name];
+      defs[name] = function () { throw new Error("Circular Dependency"); }
+      return modules[name] = fn();
+    }
+    throw new Error("Module not found: " + name);
+  }
+
   var rawScope = {
     "in": function (time, f) {
       setTimeout(f, time)
@@ -182,7 +205,11 @@
     },
     "length": function (str) { return str.length;},
     "lessthan": function (a, b) { return a < b;},
-    "greaterthan": function (a, b) { return a > b;}
+    "greaterthan": function (a, b) { return a > b;},
+    "setmodule": dModule.define,
+    "getmodule": dModule.require
+
+
     // end todo
   }  
 

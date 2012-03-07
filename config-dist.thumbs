@@ -1,0 +1,11 @@
+config #
+  db # 
+    host $ drewl.us
+    password $ wowser
+    user $ root 
+    db $ salesmin
+
+
+
+
+SetModule $config > config

@@ -2,6 +2,7 @@
 
 Thumbs = require("./thumbs.js")
 Thumbs.addScope({
-  require: require || function () {}
+  require: require || function () {},
+  thumbs: Thumbs
 })
 Thumbs.runFile(process.argv[2])

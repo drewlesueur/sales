@@ -1,0 +1,30 @@
+
+
+
+tryToReconnect = () ->
+  console.log "trying to reconnect now"
+  mysqlClient = mysql.createClient clientCredentials
+  mysqlClient.query "use mobilemin", (err) ->
+    console.log "first query after"
+    console.log err
+
+checkConnection = () ->
+  console.log "checking connection"
+  if not mysqlClient.connected
+    tryToReconnect()
+  else
+    console.log "good"
+    
+
+drews.wait 1000, ->
+  setInterval checkConnection, 5000
+
+mysqlClient.on "error", (err) ->
+  console.log "mysql error"
+  console.log err
+
+mysqlClient.on "end", (e) ->
+  console.log "it ended"
+  console.log e
+
+mysqlClient.query("USE mobilemin");

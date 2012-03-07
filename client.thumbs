@@ -1,3 +1,23 @@
 socket Io.connect $http://salesmin.com:8024
 
 Socket.emit $test $wowser
+
+
+localStorage.beenHere $true
+Say localStorage.beenHere
+
+
+$ in the future use compay token
+createNewCompany * 
+  Socket.emit $newCompany * theCompanyId
+    localStorage.companyId theCompanyId 
+    companyId theCompanyId
+
+companyId 0
+
+If
+  > localStorage.companyId
+  > companyId localStorage.companyId 
+  createNewCompany
+  
+

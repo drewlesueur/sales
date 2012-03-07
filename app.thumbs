@@ -1,18 +1,11 @@
-port 8024
+mysqlHelper Require $ ./mysql-helper.js
+SetModule $mysql-helper > mysqlHelper
 
-express Require $express
-io Require $socket.io
-app Express.createServer
-io Io.listen app
+Thumbs.runFile $ config.thumbs
+Thumbs.runFile $ db.thumbs
+Thumbs.runFile $ server.thumbs
+Thumbs.runFile $ appsplat.thumbs
 
-App.listen 8024
-
-App.get $/ * req res
-  Res.send $ hello world 2
-
-App.listen port
-
-Io.sockets.on $connection * socket
-  Socket.on $test * query
-    Say $ got a test 
-
+appsplat GetModule $appsplat
+Appsplat 8024
+Say $ running server

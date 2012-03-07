@@ -1,0 +1,21 @@
+dbConnect GetModule $db
+config GetModule $config
+
+dbHelper DbConnect
+  config.db.host
+  config.db.user
+  config.db.password
+  config.db.db
+
+onsocketconnect * socket
+  Socket.on $test * query
+    Say $ got a test 
+
+  Socket.on $newCompany * cb
+    db.put
+    Cb 100
+
+run * app io
+  Io.sockets.on $connection onsocketconnect
+
+SetModule $server > run

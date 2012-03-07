@@ -1,0 +1,47 @@
+$ TODO: fix things like auto check reconnection
+mysql Require $mysql
+mysqlHelperClass GetModule $mysql-helper
+
+mysqlHelper 0
+client 0
+
+setUpClient * mysqlHelper client
+  tryToReconnect *
+    Connect
+      client.host
+      client.user
+      client.pw
+      client.db
+
+  checkConnection *
+    Say $ checking connection
+    If
+      > Not client.connected
+      tryToReconnect
+      > Say $ connection good
+  
+  $ todo: add this interval to the client
+  In 1000 *
+    SetInterval checkConnection 5000 
+
+  In 1000 *
+    SetInterval 
+
+connect * host user pw db
+  client Mysql.createClient #
+    user user
+    password pw
+    host host
+
+  Say mysqlHelperClass
+  Say mysqlHelperClass.init
+  mysqlHelper MysqlHelperClass.init client
+  If
+    > db
+    > Client.query $ use $db
+
+  SetUpClient mysqlHelper client
+  mysqlHelper
+  
+
+SetModule $db > connect

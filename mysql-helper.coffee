@@ -1,4 +1,6 @@
 class MySqlHelper
+  @init: (client) ->
+    new MySqlHelper(client)
   constructor: (client) ->
     @client = client
   insert: (table, hash, callback) ->
@@ -31,4 +33,4 @@ class MySqlHelper
     wheresStr = wheres.join " AND "
     @client.query "#{update} #{setStr} WHERE #{wheresStr}", actualValues, callback 
 
-module.exports.MySqlHelper = MySqlHelper
+module.exports = MySqlHelper
