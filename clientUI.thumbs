@@ -1,0 +1,33 @@
+find * selector
+  Document.querySelector selector
+
+findall * selector
+  Document.querySelectorAll selector
+
+make * what
+  Document.createElement what
+
+addEl * what
+  Document.body.appendChild what
+
+form Find $ #contactForm 
+nameEl Find $ #name
+phoneEl Find $ #phone
+noteEl Find $ #note
+
+Form.addEventListener $submit * e
+  E.preventDefault
+  name nameEl.value
+  phone phoneEl.value
+  note noteEl.value
+  OnAddContactMessage name phone note
+
+addCustomer *    
+  contactEl Make $div
+   
+  AddEl contactEl
+
+clearForm *
+  nameEl.value empty
+  phoneEl.value empty
+  noteEl.value empty

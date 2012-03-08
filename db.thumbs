@@ -7,6 +7,8 @@ client 0
 
 setUpClient * mysqlHelper client
   tryToReconnect *
+    ClearInterval client.myCheckConnectionInterval
+    ClearInterval client.myHeartbeatInterval
     Connect
       client.host
       client.user
@@ -19,13 +21,14 @@ setUpClient * mysqlHelper client
       > Not client.connected
       tryToReconnect
       > Say $ connection good
-  
-  $ todo: add this interval to the client
-  In 1000 *
-    SetInterval checkConnection 5000 
 
-  In 1000 *
-    SetInterval 
+  connectToKeeopAlive * 
+    query $ SELECT 1
+    MysqlHelper.query query * err
+      Say $ heartbeat query
+    
+  client.myCheckConnectionInterval SetInterval checkConnection 5000 
+  client.myHeartbeatInterval SetInterval connectToKeeopAlive 10000
 
 connect * host user pw db
   client Mysql.createClient #
@@ -42,6 +45,5 @@ connect * host user pw db
 
   SetUpClient mysqlHelper client
   mysqlHelper
-  
 
 SetModule $db > connect

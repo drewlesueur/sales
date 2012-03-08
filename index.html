@@ -1,12 +1,41 @@
 <html> 
 <head>
+<meta name="viewport" content="initial-scale = 1.0" />
 <script src="http://salesmin.com:8024/socket.io/socket.io.js"></script>
 <script src="thumbs.js"></script>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica;
+
+  }
+  input {
+    font-size: 20px;
+    padding: 5px;
+    margin: 3px;
+    border: 1px solid black;
+    -webkit-border-radius: 0px;
+    -webkit-appearance: none;
+  }
+  input[type="submit"] {
+    -webkit-border-radius: 0px;
+    background-color: black;
+    -webkit-appearance: none;
+    font-weight: bold;
+    color: white;
+  }
+</style>
 </head>
 <body>
 <h1>Salesmin</h1>
-Just a name and a note. Coming soon...
+<br />
+<form id="contactForm">
+  <input type="text" id="name" placeholder="James Kirk"/> <br />
+  <input type="text" id="phone" placeholder="480-555-6666"/> <br />
+  <input type="text" id="note" placeholder="Wanted to beam up"/> <br />
+  <input type="submit" value="Save"/>
+</form>
 <script type="text/thumbs" src="client.thumbs"></script>
-<input type="">
-
+<script type="text/thumbs" src="clientUI.thumbs"></script>
 </body>

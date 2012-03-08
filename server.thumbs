@@ -1,21 +1,43 @@
 dbConnect GetModule $db
 config GetModule $config
 
-dbHelper DbConnect
+db DbConnect
   config.db.host
   config.db.user
   config.db.password
   config.db.db
 
 onsocketconnect * socket
+  Say $wowser
+
+  Socket.on $realityCheck *
+    Say $ yo this is a reality check
+
   Socket.on $test * query
     Say $ got a test 
 
   Socket.on $newCompany * cb
-    db.put
     Cb 100
 
+  Socket.on $newContact * companyId name phone note cb
+    data #
+      company_id companyId
+      name name
+      phone phone
+
+    Say $ GOT HERE
+    Db.insert $contacts data * err info
+      Say $ but got here
+      contactId info.insertId
+      noteData #
+        contact_id contactId
+        note note
+      Db.insert $notes noteData * err info
+        Cb contactId
+
+
 run * app io
+  Say $ wowser
   Io.sockets.on $connection onsocketconnect
 
 SetModule $server > run
