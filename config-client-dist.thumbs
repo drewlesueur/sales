@@ -1,0 +1,4 @@
+config #
+  server $ http://localhost:8024
+
+SetModule $config > config

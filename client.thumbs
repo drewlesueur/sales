@@ -1,5 +1,6 @@
-socket Io.connect $http://salesmin.com:8024
-
+config GetModule $config
+Say config.server
+socket Io.connect config.server
 Socket.emit $test $wowser
 
 localStorage.beenHere $true
@@ -11,10 +12,17 @@ onAddContactMessage * name note
   Say name
   Say note
   Socket.emit $newContact companyId name note * id
+    PopulateContact #
+      name name
+      note note
     ClearForm
 
 getContacts *
-  Socket.emit $getContacts * contacts
+  Say $ going to get contacts for $companyId
+  Socket.emit $getContacts companyId * err contacts
+    Say $ the contacts are
+    Say contacts
+    PopulateContacts contacts
 
 $ in the future use compay token
 createNewCompany * 
@@ -48,10 +56,3 @@ $ idea for template lang or something
     
 
   searchResults $
-    
-
-
-
-
-
-

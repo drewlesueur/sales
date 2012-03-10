@@ -3,7 +3,6 @@
 <meta name="viewport" content="initial-scale = 1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 
-<script src="http://salesmin.com:8024/socket.io/socket.io.js"></script>
 <script src="thumbs.js"></script>
 <style>
   * {
@@ -39,6 +38,10 @@
   <input type="text" id="note" placeholder="Add a note"/> <br />
   <input type="submit" value="Save" style="width: 90%;"/>
 </form>
+<div id="contacts">
+</div>
+<script src="http://localhost:8024/socket.io/socket.io.js"></script>
+<script type="text/thumbs" src="config-client.thumbs"></script>
 <script type="text/thumbs" src="client.thumbs"></script>
 <script type="text/thumbs" src="clientUI.thumbs"></script>
 </body>

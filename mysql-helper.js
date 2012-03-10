@@ -1,6 +1,6 @@
 (function() {
-  var MySqlHelper,
-    __slice = Array.prototype.slice;
+  var MySqlHelper;
+  var __slice = Array.prototype.slice;
 
   MySqlHelper = (function() {
 

@@ -17,7 +17,29 @@ onsocketconnect * socket
     Say $ got a test 
 
   Socket.on $newCompany * cb
-    Cb 100
+    Cb err 100
+
+  Socket.on $getContacts * companyId callback
+    $ wierd query.
+      how else do you get the most recent note?
+      group by order ??
+    getContactsQuery $
+      SELECT c.*, n.* from contacts c
+      LEFT JOIN (SELECT * FROM notes ORDER BY id DESC) n
+      ON c.id = n.contact_id
+      WHERE c.company_id = ?
+      GROUP BY c.id
+
+    dbArgs + companyId
+    Say $ going to query
+    Say dbArgs
+   
+    Db.query getContactsQuery dbArgs * err results
+      Say $ GOT HERE
+      Say err
+      Say results
+      Callback err results
+      
 
   Socket.on $newContact * companyId name note cb
     data #

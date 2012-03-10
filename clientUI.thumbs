@@ -10,15 +10,33 @@ make * what
 addEl * what
   Document.body.appendChild what
 
+addElToContacts * el
+  
+  El.insertBefore()
+   
+
 form Find $ #contactForm 
 nameEl Find $ #name
 noteEl Find $ #note
+contactsEl Find $ #contacts
 
 Form.addEventListener $submit * e
   E.preventDefault
   name nameEl.value
   note noteEl.value
   OnAddContactMessage name note
+
+populateContact * contact
+  name contact.name
+  note contact.note
+  id contact.id
+  contactEl Make $div
+  contactEl.innerHTML $
+    <b>$name</b> <span>$note</span>
+  AddEl contactEl
+
+populateContacts * contacts
+  Loop contacts populateContact
 
 addCustomer *    
   contactEl Make $div
