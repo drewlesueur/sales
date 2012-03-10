@@ -1,6 +1,8 @@
 <html> 
 <head>
 <meta name="viewport" content="initial-scale = 1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
 <script src="http://salesmin.com:8024/socket.io/socket.io.js"></script>
 <script src="thumbs.js"></script>
 <style>
@@ -8,8 +10,9 @@
     padding: 0;
     margin: 0;
     font-family: Helvetica;
-
+    box-sizing: border-box;
   }
+
   input {
     font-size: 20px;
     padding: 5px;
@@ -19,6 +22,7 @@
     -webkit-appearance: none;
   }
   input[type="submit"] {
+    margin: 0;
     -webkit-border-radius: 0px;
     background-color: black;
     -webkit-appearance: none;
@@ -31,10 +35,9 @@
 <h1>Salesmin</h1>
 <br />
 <form id="contactForm">
-  <input type="text" id="name" placeholder="James Kirk"/> <br />
-  <input type="text" id="phone" placeholder="480-555-6666"/> <br />
-  <input type="text" id="note" placeholder="Wanted to beam up"/> <br />
-  <input type="submit" value="Save"/>
+  <input type="text" id="name" placeholder="Add a name"/> <br />
+  <input type="text" id="note" placeholder="Add a note"/> <br />
+  <input type="submit" value="Save" style="width: 90%;"/>
 </form>
 <script type="text/thumbs" src="client.thumbs"></script>
 <script type="text/thumbs" src="clientUI.thumbs"></script>

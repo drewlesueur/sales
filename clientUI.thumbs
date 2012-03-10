@@ -12,15 +12,13 @@ addEl * what
 
 form Find $ #contactForm 
 nameEl Find $ #name
-phoneEl Find $ #phone
 noteEl Find $ #note
 
 Form.addEventListener $submit * e
   E.preventDefault
   name nameEl.value
-  phone phoneEl.value
   note noteEl.value
-  OnAddContactMessage name phone note
+  OnAddContactMessage name note
 
 addCustomer *    
   contactEl Make $div
@@ -29,5 +27,4 @@ addCustomer *
 
 clearForm *
   nameEl.value empty
-  phoneEl.value empty
   noteEl.value empty

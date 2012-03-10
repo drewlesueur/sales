@@ -7,11 +7,10 @@ Say localStorage.beenHere
 
 Socket.emit $realityCheck
 
-onAddContactMessage * name phone note
+onAddContactMessage * name note
   Say name
-  Say phone
   Say note
-  Socket.emit $newContact companyId name phone note * id
+  Socket.emit $newContact companyId name note * id
     ClearForm
 
 getContacts *
@@ -32,4 +31,27 @@ If
     GetContacts
   createNewCompany
   
+$ idea for template lang or something
+ 
+  header $
+    *Salesmin* [search]
+
+  contacts $
+    ~contacts~     
+    |name|lastNote|
+
+  main $
+    header
+    [name]
+    [note]
+    {Go}
+    
+
+  searchResults $
+    
+
+
+
+
+
 
