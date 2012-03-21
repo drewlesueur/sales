@@ -7,12 +7,15 @@ findall * selector
 make * what
   Document.createElement what
 
-addEl * what
-  Document.body.appendChild what
+contactsEl Find $ #contacts
 
 addElToContacts * el
-  
-  El.insertBefore()
+  If
+    > contactsEl.childNodes.length
+    > ContactsEl.insertBefore el contactsEl.firstChild
+      Say $ wowser
+    > ContactsEl.appendChild el
+      Say $ appender
    
 
 form Find $ #contactForm 
@@ -33,15 +36,10 @@ populateContact * contact
   contactEl Make $div
   contactEl.innerHTML $
     <b>$name</b> <span>$note</span>
-  AddEl contactEl
+  AddElToContacts contactEl
 
 populateContacts * contacts
   Loop contacts populateContact
-
-addCustomer *    
-  contactEl Make $div
-   
-  AddEl contactEl
 
 clearForm *
   nameEl.value empty

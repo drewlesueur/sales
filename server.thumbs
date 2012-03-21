@@ -33,7 +33,7 @@ onsocketconnect * socket
     dbArgs + companyId
     Say $ going to query
     Say dbArgs
-   
+    Say getContactsQuery  
     Db.query getContactsQuery dbArgs * err results
       Say $ GOT HERE
       Say err

@@ -1,4 +1,3 @@
-config GetModule $config
 Say config.server
 socket Io.connect config.server
 Socket.emit $test $wowser
@@ -26,8 +25,8 @@ getContacts *
 
 $ in the future use compay token
 createNewCompany * 
-  Socket.emit $newCompany * theCompanyId
-    localStorage.companyId theCompanyId 
+  Socket.emit $newCompany * err theCompanyId
+    $ localStorage.companyId theCompanyId 
     companyId theCompanyId
     GetContacts
 
@@ -39,20 +38,3 @@ If
     GetContacts
   createNewCompany
   
-$ idea for template lang or something
- 
-  header $
-    *Salesmin* [search]
-
-  contacts $
-    ~contacts~     
-    |name|lastNote|
-
-  main $
-    header
-    [name]
-    [note]
-    {Go}
-    
-
-  searchResults $

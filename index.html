@@ -1,5 +1,9 @@
 <html> 
 <head>
+<script src="config-client.js"></script>
+<script>
+  document.write("<script src=\"" + config.server + "/socket.io/socket.io.js" + "\"></scrip" + "t>")
+</script>
 <meta name="viewport" content="initial-scale = 1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 
@@ -40,8 +44,6 @@
 </form>
 <div id="contacts">
 </div>
-<script src="http://localhost:8024/socket.io/socket.io.js"></script>
-<script type="text/thumbs" src="config-client.thumbs"></script>
 <script type="text/thumbs" src="client.thumbs"></script>
 <script type="text/thumbs" src="clientUI.thumbs"></script>
 </body>
