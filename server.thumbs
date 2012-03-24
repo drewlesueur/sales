@@ -37,8 +37,11 @@ onsocketconnect * socket
   Socket.on $test * query
     Say $ got a test 
 
-  Socket.on $newCompany * cb
-    Cb err 100
+  Socket.on $newCompany * pin cb
+    If
+      > Is pin 7402
+      > Cb err 100
+      > Cb err 1
 
   Socket.on $getContacts * companyId callback
     $ wierd query.

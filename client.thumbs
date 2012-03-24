@@ -44,8 +44,9 @@ getContacts *
 
 $ in the future use compay token
 createNewCompany * 
-  Socket.emit $newCompany * err theCompanyId
-    $ localStorage.companyId theCompanyId 
+  pin Prompt $ Enter Pin
+  Socket.emit $newCompany pin * err theCompanyId
+    localStorage.companyId theCompanyId 
     companyId theCompanyId
     GetContacts
 
