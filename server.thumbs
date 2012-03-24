@@ -10,8 +10,21 @@ db DbConnect
 onsocketconnect * socket
   Say $wowser
 
+  Socket.on $deleteContact * id cb
+    deleteContactQuery $
+      DELETE FROM contacts
+      WHERE id = ?
+
+    Say deleteContactQuery
+    dbArgs + id
+    Say dbArgs
+    Db.query
+      deleteContactQuery
+      dbArgs
+      * err
+        Cb err
+
   Socket.on $addNote * id note cb
-   
     data #
       contact_id id
       note note
@@ -71,7 +84,7 @@ onsocketconnect * socket
         contact_id contactId
         note note
       Db.insert $notes noteData * err info
-        Cb contactId
+        Cb err contactId
 
 run * app io
   Say $ wowser

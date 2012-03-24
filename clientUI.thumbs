@@ -32,6 +32,13 @@ contactNoteEl Find $ #contactNote
 nameEl Find $ #name
 noteEl Find $ #note
 contactsEl Find $ #contacts
+deleteEl Find $ #delete
+
+DeleteEl.addEventListener $click * e
+  name currentContact.name
+  If
+    > Confirm $ are you sure you want to delete $name
+    > DeleteContact currentContact.id
 
 BackEl.addEventListener $click * e
   E.preventDefault
@@ -56,9 +63,9 @@ addNoteForContact * note
   noteText note.note
   id note.contact_id
   Say $ adding note for $id
-  noteEl Make $ div
-  noteEl.innerHTML noteText
-  Prepend notesEl noteEl
+  newNoteEl Make $ div
+  newNoteEl.innerHTML noteText
+  Prepend notesEl newNoteEl
   contactNoteEl.value empty
 
 updateHomeScreenNote * id note
@@ -66,6 +73,9 @@ updateHomeScreenNote * id note
   homeScreenNote Find $ [data-id="$id"] .note
   homeScreenNote.innerHTML note
 
+uIRemoveContact * id
+  contact Find $ [data-id="$id"]
+  ContactsEl.removeChild contact
 
 currentContact empty
 
@@ -82,6 +92,7 @@ showContacts *
    
 
 populateContact * contact
+  currentContact contact
   name contact.name
   note contact.note
   id contact.id
