@@ -1,26 +1,38 @@
-Say config.server
 socket Io.connect config.server
 Socket.emit $test $wowser
 
 localStorage.beenHere $true
-Say localStorage.beenHere
 
 Socket.emit $realityCheck
 
-onAddContactMessage * name note
-  Say name
+addNote * id note
+  Say id
   Say note
-  Socket.emit $newContact companyId name note * id
+  Socket.emit $addNote id note * err
+    AddNoteForContact #
+      note note
+      contact_id id
+    UpdateHomeScreenNote id note
+
+selectContact * contact
+  id contact.id
+  GetAllNotesForContact id
+  ShowContact contact  
+
+getAllNotesForContact * id
+  Socket.emit $getAllNotesForContact id * err notes
+    ShowNotesForContact notes
+
+    
+onAddContactMessage * name note
+  Socket.emit $newContact companyId name note * err id
     PopulateContact #
       name name
       note note
     ClearForm
 
 getContacts *
-  Say $ going to get contacts for $companyId
   Socket.emit $getContacts companyId * err contacts
-    Say $ the contacts are
-    Say contacts
     PopulateContacts contacts
 
 $ in the future use compay token

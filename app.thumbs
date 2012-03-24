@@ -1,7 +1,7 @@
 mysqlHelper Require $ ./mysql-helper.js
 SetModule $mysql-helper > mysqlHelper
 
-Thumbs.runFile $ config.thumbs
+Thumbs.runFile $ ../salesmin-config.thumbs
 Thumbs.runFile $ db.thumbs
 Thumbs.runFile $ server.thumbs
 Thumbs.runFile $ appsplat.thumbs

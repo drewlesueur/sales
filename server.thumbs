@@ -10,6 +10,14 @@ db DbConnect
 onsocketconnect * socket
   Say $wowser
 
+  Socket.on $addNote * id note cb
+   
+    data #
+      contact_id id
+      note note
+    Db.insert $notes data * err info
+      Cb err note 
+    
   Socket.on $realityCheck *
     Say $ yo this is a reality check
 
@@ -24,7 +32,7 @@ onsocketconnect * socket
       how else do you get the most recent note?
       group by order ??
     getContactsQuery $
-      SELECT c.*, n.* from contacts c
+      SELECT c.*, n.note from contacts c
       LEFT JOIN (SELECT * FROM notes ORDER BY id DESC) n
       ON c.id = n.contact_id
       WHERE c.company_id = ?
@@ -40,6 +48,15 @@ onsocketconnect * socket
       Say results
       Callback err results
       
+  Socket.on $getAllNotesForContact * id cb
+    getNotesQuery $
+      SELECT * FROM notes
+      WHERE contact_id = ?
+
+    Db.query getNotesQuery
+      + id
+      * err notes
+        Cb err notes 
 
   Socket.on $newContact * companyId name note cb
     data #

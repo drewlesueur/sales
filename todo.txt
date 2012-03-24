@@ -1,1 +1,2 @@
 Hide config.thumbs
+change it so everything is hosted elsewhere but index.html

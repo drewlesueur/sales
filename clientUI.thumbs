@@ -8,20 +8,40 @@ make * what
   Document.createElement what
 
 contactsEl Find $ #contacts
+contactsViewEl Find $ #contactsView
+contactViewEl Find $ #contactView
+nameHeader Find $ #nameHeader
+backEl Find $ #back
+notesEl Find $ #notes
 
 addElToContacts * el
   If
     > contactsEl.childNodes.length
     > ContactsEl.insertBefore el contactsEl.firstChild
-      Say $ wowser
     > ContactsEl.appendChild el
-      Say $ appender
-   
+  
+prepend * par child
+  If
+    > par.childNodes.length
+    > Par.insertBefore child par.firstChild
+    > Par.appendChild child
 
 form Find $ #contactForm 
+addNoteForm Find $ #addNoteForm
+contactNoteEl Find $ #contactNote
 nameEl Find $ #name
 noteEl Find $ #note
 contactsEl Find $ #contacts
+
+BackEl.addEventListener $click * e
+  E.preventDefault
+  ShowContacts
+  
+AddNoteForm.addEventListener $submit * e
+  E.preventDefault
+  note contactNoteEl.value 
+  AddNote currentContact.id note
+
 
 Form.addEventListener $submit * e
   E.preventDefault
@@ -29,13 +49,55 @@ Form.addEventListener $submit * e
   note noteEl.value
   OnAddContactMessage name note
 
+showNotesForContact * notes
+  Loop notes addNoteForContact 
+
+addNoteForContact * note
+  noteText note.note
+  id note.contact_id
+  Say $ adding note for $id
+  noteEl Make $ div
+  noteEl.innerHTML noteText
+  Prepend notesEl noteEl
+  contactNoteEl.value empty
+
+updateHomeScreenNote * id note
+  Say Find $ [data-id="$id"] .note
+  homeScreenNote Find $ [data-id="$id"] .note
+  homeScreenNote.innerHTML note
+
+
+currentContact empty
+
+showContact * contact
+  contactsViewEl.style.display $none
+  contactViewEl.style.display $block
+  nameHeader.innerHTML contact.name
+  notesEl.innerHTML empty
+  currentContact contact
+
+showContacts * 
+  contactsViewEl.style.display $block
+  contactViewEl.style.display $none
+   
+
 populateContact * contact
   name contact.name
   note contact.note
   id contact.id
   contactEl Make $div
+  ContactEl.setAttribute $data-id id
   contactEl.innerHTML $
-    <b>$name</b> <span>$note</span>
+    <b>$name</b> <span class="note">$note</span>
+
+  handler * e
+    SelectContact contact
+    
+  ContactEl.addEventListener
+    $click
+    handler
+    false
+
   AddElToContacts contactEl
 
 populateContacts * contacts

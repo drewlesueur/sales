@@ -35,14 +35,25 @@
 </style>
 </head>
 <body>
-<h1>Salesmin</h1>
 <br />
-<form id="contactForm">
-  <input type="text" id="name" placeholder="Add a name"/> <br />
-  <input type="text" id="note" placeholder="Add a note"/> <br />
-  <input type="submit" value="Save" style="width: 90%;"/>
-</form>
-<div id="contacts">
+<div id="contactsView">
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Add a name"/> <br />
+    <input type="text" id="note" placeholder="Add a note"/> <br />
+    <input type="submit" value="Save" style="width: 90%;"/>
+  </form>
+  <div id="contacts">
+  </div>
+</div>
+<div id="contactView" style="display: none;">
+  <a href="#" id="back">Back to contacts</a>
+  <h1 id="nameHeader"></h1>
+  <form id="addNoteForm">
+    <input type="text" id="contactNote"/>
+  </form>
+  <div id="notes">
+  </div>
+
 </div>
 <script type="text/thumbs" src="client.thumbs"></script>
 <script type="text/thumbs" src="clientUI.thumbs"></script>
